@@ -1,0 +1,65 @@
+SDK Steps:
+
+	- (Optional) Enumerate supported capture video modes
+		*** IDeckLinkInput::GetDisplayModeIterator
+			For each reported capture mode, call
+				***	IDeckLinkInput::DoesSupportVideoMode
+	- IDeckLinkInput::EnableVideoInput
+	- IDeckLinkInput::EnableAudioInput
+	- IDeckLinkInput::SetCallback
+	- IDeckLinkInput::StartStreams
+		While stremas are running, receive calls to IDeckLinkInputCallback::VideoInputFrameArrived
+
+SDK steps:
+
+	main(){
+
+
+		// Instantiate an objet which has functions for each step described in the sdk...
+		
+		GetDeckLinkIterator(IDeckLinkIterator) //DeckLinkAPI.h
+		
+		//Get the required decklink device
+
+		idx = 0;
+		while((result = deckLinIterator->Next(&deckLink)) == S_OK){
+			dlstring_t deckLinkName;
+			result = deckLink->GetDisplayName(&deckLinkName);
+			if (result != S_OK){
+				deckLinkDeviceNames.push_back(DlToStdString(deckLinkName));
+			DeleteString(deckLinkName);
+
+			}		
+			
+			if (idx++ == deckLinkIndex){
+				IDeckLinkProfileAttributes* deckLinkAttributes = NULL;
+				int64_t			ioSupportAttribute = 0;
+				dlbool_t		formatDetectionSupportAttribute;
+				result = deckLink->QueryInterface(IID_IDeckLinkProfileAttributes, (void**)&deckLinkAttributes);
+				if (result != S_OK || ((ioSupportAttribute & bmdDeviceSupportsCapture) == 0)){
+					fprintf(stderr, "Selected device does not support capture \n");
+					displayHelp = true;
+}
+				else{
+					result = deckLinkAttrtibutes->GetFlag(BMDDeckLinkSupportsInputFormatDetection, &formatDetectionSupportAttribute);
+					supportsFormatDetection = (result == S_OK) && formatDetectionSupportAttribute;
+					selectedDeckLinkInput = new DeckLinkInputDevice(deckLink);
+		             	}		
+				deckLinkAttributes->Release();
+			}
+			deckLink->Release();
+		}	
+	
+			
+
+
+
+
+
+
+
+
+
+		CaptureStills(DeckLinkInputDevice, captureInterval, framesToCapture, captureDirectory, filenamePrefix){
+			
+	

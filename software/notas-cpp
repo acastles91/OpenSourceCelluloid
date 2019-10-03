@@ -1,0 +1,25 @@
+enum = a way to give a name to a value;
+	A way to create types.
+
+enum Example {
+	A, B, C
+}
+
+int main(){
+	Example value = B
+}
+	
+Pointers:
+
+	A pointer is an integer that stores a memory address
+	
+	Memory is one big line (single street from start to end, with a row of houses that have addresses)
+	
+	Every house in this metaphor is one byte
+	
+	A pointer is an integer that holds an address: if it has a different data type it will be refering not to the pointer itself but to the expected data in the address.
+
+	int main(){
+		int vat = 8; 
+		void* myPointer = &var;
+} 

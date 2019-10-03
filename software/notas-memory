@@ -1,0 +1,110 @@
+Most important two kinds of memory;
+	Stack
+	Heap
+
+When an application lauches, the operating system loads the entire application into memory and allocates physical ram so that the application can run. Stack and heap are areas in RAM; stack is an area in memory with a predefined size around 2mb) and the heap is also predifined but it can grow and change as the application goes on. Both areas are physically located in the RAM. One difference between both areas is how memory is allocated inside them. Example, allocating an int
+
+int main(){
+	int value = 5;	//stack allocation, one line
+
+	int* hvalue = new int; 
+	*hvalue	= 5; //heap allocation, two lines 
+}
+
+Stack allocation is very fast, blocks get "stacked" on top of eachother. When the scope ends (curly brackets) memory pops off.
+With heap allocation memory has to be freed explicitely with the operator "delete"
+
+Heap is dynamic memory.
+You should try to allocate on the stack whenever possible unless: you need lifetime of your memory to be longer than the function or you need more data (ex. textures)
+
+Pointers:
+	A pointer is an integer that holds an address. 
+
+	void* ptr = 0; // void pointer, no type. 0 is not a valid memory address, the program will crash.
+
+	int* ptr;	// when you give a type to a pointer, the compiler expects in this case an integer in that address
+	
+	int main(){
+		int var = 8; // create an integr. Every variable has a memory address.
+		// with the ampersand (&) operator we can get the memory address of a variable and store it in a pointer:
+		void* ptr = &var;
+}
+
+A pointer is like any other value, instead of holding a value itself, holds an address (which is also a value). A pointer is an integer, the data type of a pointer only tells the compiler what type of data is expected to be store in the address, although the address itself is always an integer. 
+
+Why wouldn't you use always a void pointer? 
+
+int main (){
+	int var = 8;
+	int* ptr = &var; //we tell the compiler that there is an integer stored at &var
+	*ptr = 10;	//asterisc in front. DEREFERENCING!! we change the value that is stored at &var
+
+}
+
+References:
+	
+Pointers and references are the same thing for the computers. References are pointers in disguise. A reference is a way for us to reference an existing variable. Unlike pointers, which can be created, references cannot be created from scratch, because they reference already existing variables. 
+
+
+	int main(){
+		int a = 5;
+		int& ref = a; // this is an 'alias'. The ampersand is part of the variable type declaration. ref is an alias to a. 
+		ref = 2;	// this changes the value of a.
+}
+	
+Example:
+		
+	void Increment (int value){
+		value ++;
+	}
+	
+	int main(){
+		int a = 5;
+		Increment(a);
+	}
+This program creates a with a value 5, and then uses it as an argument for the function Increment. This creates a new value, equals to a, runs the function and then pops. The original value of a remains unaltered.
+		
+	void Increment (int* value){
+		(*value)++; //DEREFERENCING NEEDS TO COME FIRST!! It has to be put in parethesis so that it precedes the increment, which would otherwise happen first
+	}
+
+	int main(){
+		int a = 5;
+		Increment(&a);
+		}
+
+	
+References are not new variables, they don't occupy memory and don't have storage. 
+
+
+New:
+
+	The main purpose of New is to allocate memory on the heap. It takes the data type as an argument to calculate how many bytes have to be allocated. I tasks the c standard library for the necessary ammount of memory, which delivers an address where there is the ammount of free bytes necesarry in a row. When this address is found, it returns as a pointer to that memory address. Example:
+
+	class Entity{
+	private:
+		std::string m_Name;
+	public:
+		Entity() : m_Name("Unknown") {}
+		Entity(const std::string& name) : m_Name(name) {}
+
+		const std::string& GetName() const {return m_Name; }
+};
+
+	int main(){
+		int a = 2;
+		int* b = new int;
+
+
+Instances, classes, objects:
+
+	To use a class it has to be instantiated. For that, we have to determine where in memory it will be. 
+
+class Entity
+{
+private:
+	std::string m_Name;
+public:
+	Entity () : m_Name("unknown") {}
+	Entity (const std::string& name) : m_Name(name) {}
+	};		
