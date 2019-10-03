@@ -1,0 +1,49 @@
+EESchema Schematic File Version 4
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L OpenSourceCelluloid:ESP32-WROOM-32D U?
+U 1 1 5D372AB4
+P 6000 2800
+F 0 "U?" H 6000 3615 50  0000 C CNN
+F 1 "ESP32-WROOM-32D" H 6000 3524 50  0000 C CNN
+F 2 "" H 5950 2850 50  0001 C CNN
+F 3 "" H 5950 2850 50  0001 C CNN
+	1    6000 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L OpenSourceCelluloid:TMC2130-LA U?
+U 1 1 5D37BCF2
+P 8500 2700
+F 0 "U?" H 8800 3481 50  0000 C CNN
+F 1 "TMC2130-LA" H 8800 3390 50  0000 C CNN
+F 2 "" H 8500 2700 50  0001 C CNN
+F 3 "" H 8500 2700 50  0001 C CNN
+	1    8500 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L OpenSourceCelluloid:AS5600 U?
+U 1 1 5D3836C0
+P 7450 5200
+F 0 "U?" H 7425 5625 50  0000 C CNN
+F 1 "AS5600" H 7425 5534 50  0000 C CNN
+F 2 "" H 7450 5200 50  0001 C CNN
+F 3 "" H 7450 5200 50  0001 C CNN
+	1    7450 5200
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
