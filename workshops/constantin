@@ -3,3 +3,14 @@ Spannungsregler (Nicht linearregler sonder Schachtregler)
 Duet2 Board - Smoothie Board
 murata 78sr
 
+SEW-Eurodrive //Deutsche Servohersteller, tolle tools-
+
+
+TMC2660:
+
+	SPI (Verbunden mit Hardware pins (Arduino Dokumentation lesen) SDI SDO SCK, CS)
+		:Software klappt nicht mit bibliothek TMC-Stepper, deswegen braucht man hardware pins 
+
+	Bibliothek: Auf Arduino/Libraries gehen und gucken.(QT benutzen) 
+
+	Take StallGuard-TMC setup and use it in the Simple example, or just use StallGuard and ignore the otherone 
